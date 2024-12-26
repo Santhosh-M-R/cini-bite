@@ -6,6 +6,7 @@ export const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<MovieList apiPath="movie/now_playing" />} />
+      <Route path="/cini-bite" element={<MovieList apiPath="movie/now_playing" />} />
       <Route path="/movie/:id" element={<MovieDetails />} />
       <Route
         path="/movie/popular"
