@@ -5,7 +5,7 @@ const Card = ({ movie }) => {
 
   const image = `https://image.tmdb.org/t/p/w500/${poster_path}`;
   return (
-    <Link to={`/cini-bite/movie/${id}`}>
+    <Link to={`/movie/${id}`}>
       <div className="max-w-sm mx-auto bg-white border border-gray-200">
         <div className="p-5">
           <img src={image} alt="" className="mb-2" />

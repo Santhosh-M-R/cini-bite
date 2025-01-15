@@ -8,10 +8,10 @@ import { MovieDetails, MovieList, PageNotFound, Search } from "../pages/index";
 export const AllRoutes = () => {
   return (
     <Routes>
-      <Route path="/cini-bite/signup" element={<SignUp />} />
-      <Route path="/cini-bite/signin" element={<SignIn />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/signin" element={<SignIn />} />
       <Route
-        path="/cini-bite"
+        path="/"
         element={
           <PrivateRoute>
             <MovieList apiPath="/movie/now_playing" />
@@ -19,7 +19,7 @@ export const AllRoutes = () => {
         }
       />
       <Route
-        path="/cini-bite/movie/:id"
+        path="/movie/:id"
         element={
           <PrivateRoute>
             <MovieDetails />
@@ -27,7 +27,7 @@ export const AllRoutes = () => {
         }
       />
       <Route
-        path="/cini-bite/movie/popular"
+        path="/movie/popular"
         element={
           <PrivateRoute>
             <MovieList apiPath="/movie/popular" />
@@ -35,7 +35,7 @@ export const AllRoutes = () => {
         }
       />
       <Route
-        path="/cini-bite/movie/top"
+        path="/movie/top"
         element={
           <PrivateRoute>
             <MovieList apiPath="/movie/top_rated" />
@@ -43,7 +43,7 @@ export const AllRoutes = () => {
         }
       />
       <Route
-        path="/cini-bite/movie/upcoming"
+        path="/movie/upcoming"
         element={
           <PrivateRoute>
             <MovieList apiPath="/movie/upcoming" />

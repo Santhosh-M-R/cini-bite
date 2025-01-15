@@ -15,22 +15,22 @@ const Header = () => {
   const navThings = [
     {
       id: "1",
-      to: "/cini-bite/",
+      to: "/",
       name: "Home",
     },
     {
       id: "2",
-      to: "/cini-bite/movie/popular",
+      to: "/movie/popular",
       name: "Popular",
     },
     {
       id: "3",
-      to: "/cini-bite/movie/top",
+      to: "/movie/top",
       name: "Top",
     },
     {
       id: "4",
-      to: "/cini-bite/movie/upcoming",
+      to: "/movie/upcoming",
       name: "Upcoming",
     },
   ];
@@ -39,7 +39,7 @@ const Header = () => {
     signOut(auth);
     toast.success("User logged out successfully!");
     setTimeout(() => {
-      navigate("/cini-bite/signin");
+      navigate("/signin");
     }, 1000);
   };
 
@@ -61,7 +61,7 @@ const Header = () => {
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <NavLink
-            to="/cini-bite/"
+            to="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <BiCameraMovie className="text-4xl" />
@@ -179,14 +179,14 @@ const Header = () => {
               (pathname.includes("/signup") ? (
                 <NavLink
                   className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-                  to={"/cini-bite/signin"}
+                  to={"/signin"}
                 >
                   Signin
                 </NavLink>
               ) : (
                 <NavLink
                   className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-                  to={"/cini-bite/signup"}
+                  to={"/signup"}
                 >
                   Signup
                 </NavLink>

@@ -20,7 +20,7 @@ const PrivateRoute = ({ children }) => {
   if (user) {
     return children;
   } else {
-    return <Navigate to={"/cini-bite/signin"} />;
+    return <Navigate to={"/signin"} />;
   }
 };
 

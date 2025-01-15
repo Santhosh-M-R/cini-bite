@@ -18,7 +18,7 @@ const SignIn = () => {
       if (response) {
         toast.success("User logged in successfully!");
         setTimeout(() => {
-          navigate("/cini-bite/");
+          navigate("/");
         }, 300);
       }
     } catch (err) {

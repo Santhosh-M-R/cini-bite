@@ -22,7 +22,7 @@ const SignUp = () => {
       if (response) {
         toast.success("User created successfully!");
         setTimeout(() => {
-          navigate("/cini-bite");
+          navigate("/");
         }, 300);
       }
     } catch (err) {
