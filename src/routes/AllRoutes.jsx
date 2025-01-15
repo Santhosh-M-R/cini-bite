@@ -8,7 +8,6 @@ import { MovieDetails, MovieList, PageNotFound, Search } from "../pages/index";
 export const AllRoutes = () => {
   return (
     <Routes>
-      <Route path="/cini-bite" element={<MovieList apiPath="movie/now_playing" />} />
       <Route path="/cini-bite/signup" element={<SignUp />} />
       <Route path="/cini-bite/signin" element={<SignIn />} />
       <Route
