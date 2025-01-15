@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { options } from "../utils/Options";
 
-import { Audio } from "react-loader-spinner";
 const MovieDetails = () => {
   const param = useParams();
   const [data, setData] = useState({});
@@ -37,7 +36,7 @@ const MovieDetails = () => {
 
   const emptyStar = (
     <svg
-      class="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500"
+      className="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
@@ -49,7 +48,7 @@ const MovieDetails = () => {
 
   const colorStar = (
     <svg
-      class="w-4 h-4 text-yellow-300 ms-1"
+      className="w-4 h-4 text-yellow-300 ms-1"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
@@ -64,7 +63,7 @@ const MovieDetails = () => {
       <div role="status" className="w-5 text-center m-auto h-48">
         <svg
           aria-hidden="true"
-          class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+          className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +77,7 @@ const MovieDetails = () => {
             fill="currentFill"
           />
         </svg>
-        <span class="sr-only">Loading...</span>
+        <span className="sr-only">Loading...</span>
       </div>
     );
   }
@@ -87,7 +86,7 @@ const MovieDetails = () => {
     <main>
       <section className="flex justify-around flex-wrap py-5 items-center">
         <div className="max-w-sm pr-5">
-          <img src={image} alt="" srcset="" />
+          <img src={image} alt="" />
         </div>
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold my-3 text-center lg:text-left">
@@ -107,7 +106,7 @@ const MovieDetails = () => {
               : ""}
           </p>
           <div>
-            <div class="flex items-center gap-3">
+            <div className="flex items-center gap-3">
               <div className="flex items-center">
                 {colorStar}
                 {colorStar}
