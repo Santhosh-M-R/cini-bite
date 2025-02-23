@@ -1,13 +1,16 @@
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { BiCameraMovie } from "react-icons/bi";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { signOut } from "@firebase/auth";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+
 const Header = () => {
   const navigate = useNavigate();
 
+  const [searchedValue, setSearchedValue] = useState("");
+  const [showLogout, setShowLogout] = useState(false);
   const [user] = useAuthState(auth);
   const location = useLocation();
   const { pathname } = location;
@@ -35,6 +38,17 @@ const Header = () => {
     },
   ];
 
+  const handleProfileClick = () => {
+    console.log("Profile button clicked!");
+    setShowLogout((prev) => !prev);
+  };
+  
+
+  useEffect(() => {
+    if (!pathname.includes("/search")) {
+      setSearchedValue("");
+    }
+  }, [location]);
   const handleLogout = () => {
     signOut(auth);
     toast.success("User logged out successfully!");
@@ -43,7 +57,6 @@ const Header = () => {
     }, 1000);
   };
 
-  const [showLogout, setShowLogout] = useState(false);
   const activeClass =
     "block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500";
   const notActiveClass =
@@ -51,9 +64,11 @@ const Header = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setSearchedValue(e.target.search.value);
     navigate(`/search?q=${e.target.search.value}`);
   };
+
+  console.log(showLogout);
 
   return (
     <div>
@@ -96,7 +111,7 @@ const Header = () => {
             </button>
 
             {user && (
-              <div className="relative hidden md:block">
+              <div className="relative hidden md:block h-10">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                   <svg
                     className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -122,6 +137,8 @@ const Header = () => {
                     name="search"
                     className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Search..."
+                    value={searchedValue}
+                    onChange={(e) => setSearchedValue(e.target.value)}
                   />
                 </form>
               </div>
@@ -132,7 +149,7 @@ const Header = () => {
                 {
                   <button
                     className="ml-5"
-                    onClick={() => setShowLogout((prev) => !prev)}
+                    onClick={handleProfileClick}
                   >
                     <div className="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                       <svg
@@ -222,7 +239,7 @@ const Header = () => {
             id="navbar-search"
           >
             <div className="relative mt-3 md:hidden">
-              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none m-auto">
                 <svg
                   className="w-4 h-4 text-gray-500 dark:text-gray-400"
                   aria-hidden="true"
@@ -268,4 +285,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);
